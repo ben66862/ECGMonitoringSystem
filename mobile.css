@@ -1,0 +1,285 @@
+body {
+
+   align-content: flex-end;
+   align-items: stretch;
+   background: #ececec;
+   display: block;
+   flex-direction: column;
+   flex-wrap: nowrap;
+   justify-content: flex-start;
+ }
+
+ #main {
+   flex: 1;
+   overflow-x: hidden;
+   overflow-y: auto;
+   padding-top: 60px;
+ }
+
+ #container {
+ position: static;
+ bottom: 0;
+ right: 0;
+ width: auto;
+   height: auto;
+   border: 3px solid #273538;
+   background-color: #273538;
+   font-family: sans-serif, arial;
+ }
+
+ #BPMtext {
+   position: absolute;
+   bottom: 0%;
+   left: 300;
+   right: 0;
+   text-align: center;
+   margin: 0 auto;
+   color: red;
+   font-size: 70px;
+   width: 128px;
+   overflow-x: visible;
+   cursor: default;
+   padding: 12px 0; <!-- Innenabstand -->
+ -webkit-user-select: none;
+ }
+
+ #giphyheart{
+   position: absolute;
+   bottom: 40%;
+   left: 0;
+   right: 500;
+   text-align: center;
+   margin: 0 auto;
+
+   width: 128px;
+   overflow-x: visible;
+   visibility: hidden;
+
+   cursor: default;
+   padding: 12px 0;<!-- Innenabstand -->
+   -webkit-user-select: none;
+ }
+
+ #RRinterval {
+   position: absolute;
+   bottom: 40%;
+   left: 500;
+   right: 0;
+   text-align: center;
+   margin: 0 auto;
+   color: white;
+   font-size: 40px;
+   width: 50px;
+   overflow-x: visible;
+   cursor: default;
+   padding: 12px 0; <!-- Innenabstand -->
+ -webkit-user-select: none;
+ }
+
+ #AverageBPM {
+   position: absolute;
+   bottom: 10%;
+   left: 500;
+   right: 0;
+   text-align: center;
+   margin: 0 auto;
+   color: white;
+   font-size: 40px;
+   width: 50px;
+   overflow-x: visible;
+   cursor: default;
+   padding: 12px 0;
+   <!--Innenabstand -->
+ -webkit-user-select: none;
+ }
+
+ #Batterylevel {
+   color: #33ec40;
+   position: absolute;
+
+   left: 200;
+   right: 0;
+
+   margin: 0 auto;
+
+   font-size: 60px;
+   width: 40px;
+   height: 40px;
+
+   font-size: 46px;
+   font-weight: bold;
+
+   text-align: center;
+ }
+
+ #heartchart {
+   position: relative;
+   bottom: 60%;
+   width: 250px;
+ }
+ #myChart {
+   position: absolute;
+   width: 500;
+   height: 750;
+   bottom: 40%;
+ }
+
+ #read {
+   position: absolute;
+   width: 128px;
+   height: 60px;
+   font-size: 16px;
+   bottom: 70%;
+   left: 100;
+   right: 0;
+   text-align: center;
+ }
+ #start {
+   position: absolute;
+   width: 128px;
+   height: 60px;
+   font-size: 16px;
+   bottom: 70%;
+   left: 300;
+   right: 0;
+   text-align: center;
+ }
+ #stop {
+   position: absolute;
+   width: 128px;
+   height: 60px;
+   font-size: 16px;
+   bottom: 70%;
+   left: 500;
+   right: 0;
+   text-align: center;
+ }
+
+ #disconnect {
+   position: absolute;
+   width: 128px;
+   height: 60px;
+   font-size: 16px;
+   bottom: 70%;
+   left: 700;
+   right: 0;
+   text-align: center;
+ }
+
+ header {
+   align-content: center;
+   align-items: stretch;
+   background: #3f51b5;
+   box-shadow:
+    0 4px 5px 0 rgba(0, 0, 0, 0.14),
+    0 2px 9px 1px rgba(0, 0, 0, 0.12),
+    0 4px 2px -2px rgba(0, 0, 0, 0.2);
+   color: #fff;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: nowrap;
+   font-size: 10px;
+   height: 20px;
+   justify-content: flex-start;
+   padding: 8px 8px 0 8px;
+   position: fixed;
+   transition: transform 0.233s cubic-bezier(0, 0, 0.21, 1) 0.1s;
+   width: 100%;
+   will-change: transform;
+   z-index: 1000;
+ }
+ .header h1 {
+   flex: 1;
+   font-size: 15px;
+   font-weight: 400;
+   margin: 0;
+ }
+
+ footer {
+   position: fixed;
+   height: 60px;
+   width: auto;
+   bottom: 0%;
+   background: white;
+   left: 0;
+   right: 0;
+   text-align: center;
+ }
+
+ nav {
+   text-align: center;
+   font-size: 25px;
+   background-color: white;
+   margin-top: 8px;
+ }
+ nav ul {
+   list-style-type: none;
+ }
+ nav li {
+   display: inline;
+   margin-right: 80px;
+ }
+ a {
+   text-align: center;
+   color: #3593A8;
+   text-decoration: none;
+   font-family: sans-serif, arial;
+ }
+
+ #batterysymbol1{
+   position: absolute;
+   visibility: hidden;
+   margin: 0 auto;
+   left: 500;
+   right: 0;
+   top: 2px;
+   width: 40px;
+   height: 40px;
+ }
+ #batterysymbol2{
+   position: absolute;
+   visibility: hidden;
+   margin: 0 auto;
+   left: 500;
+   right: 0;
+   top: 2px;
+   width: 40px;
+   height: 40px;
+ }
+ #batterysymbol3{
+   position: absolute;
+   visibility: hidden;
+   margin: 0 auto;
+   left: 500;
+   right: 0;
+   top: 2px;
+   width: 40px;
+   height: 40px;
+ }
+ #batterysymbol4{
+   position: absolute;
+   visibility: hidden;
+   margin: 0 auto;
+   left: 500;
+   right: 0;
+   top: 2px;
+   width: 40px;
+   height: 40px;
+ }
+ #batterysymbol5{
+   position: absolute;
+   visibility: hidden;
+   margin: 0 auto;
+   left: 500;
+   right: 0;
+   top: 2px;
+   width: 40px;
+   height: 40px;
+ }
+
+
+
+
+
+
+}

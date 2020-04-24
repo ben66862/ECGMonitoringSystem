@@ -1,0 +1,115 @@
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8"><!-- für umlaute -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECG Monitoring System</title>
+    <meta name="description" content="Monitor your heart rate with a Web Bluetooth app.">
+    <link rel="icon" sizes="192x192" href="favicon.png">
+    <link rel="stylesheet" href="styles.css" type="text/css"> <!-- verlinken zur styles.css-->
+    <link rel="mobilesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile.css">
+    <link rel="manifest" href="/manifest.json">
+
+<script src="chart.js"></script>
+
+  </head>
+
+
+
+
+  <body>
+
+    <header class="header">
+  <h1>
+    ECG Monitoring System
+  </h1>
+  <button id="butInstall" aria-label="Install" hidden></button>
+  <button id="butRefresh" aria-label="Refresh"></button>
+
+  <div id="Batterylevel">Battery&#x25;</div>
+  <div id="batterysymbol1">
+      <img src="battery_80_100.png" alt="Battery100" width="40" height="70">
+  </div>
+  <div id="batterysymbol2">
+    <img src="battery_60_80.png" alt="Battery100" width="40" height="70">
+  </div>
+  <div id="batterysymbol3">
+      <img src="battery_40_60.png" alt="Battery100" width="40" height="70">
+  </div>
+  <div id="batterysymbol4">
+    <img src="battery_20_40.png" alt="Battery100" width="40" height="70">
+  </div>
+  <div id="batterysymbol5">
+    <img src="battery_0_20.png" alt="Battery100" width="40" height="70">
+  </div>
+
+
+  </header>
+
+
+<div class="main">
+
+    <div id="container">  <!-- ein bereich definieren und name=id -->
+
+
+
+
+      <canvas id="myChart"></canvas> <!-- style="width:512px;height:320px"-->
+
+
+      <div id="BPMtext">BPM &#x2764;</div> <!-- erstellt id + text & herzsymbol -->
+      <div id="giphyheart">
+      <img src="giphy3.gif" alt="Heartpumping"  width=200/>
+      </div>
+      <div id="RRinterval">RR_interval: </div>
+      <div id="AverageBPM">AverageBPM: </div>
+
+    </div>
+</div>
+    <footer class="footer">
+      <nav>
+      <ul>
+        <li><a href="index.html">BPM</a></li>
+        <li><a href="ecg.html">ECG</a></li>
+      </ul>
+      </nav>
+    </footer>
+    <button id="read">Search for BLE device</button>
+    <button id="start" disabled>Start</button>
+    <button id="stop" disabled>Stop</button>
+    <button id="disconnect" disabled>Disconnect</button>
+
+
+<script src="heartrate.js"></script>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+   https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-analytics.js"></script>
+
+<script>
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyBSCM3hgQ_NhJwBJkZntN3poGJMdDL-Pk8",
+  authDomain: "wearable-ecg.firebaseapp.com",
+  databaseURL: "https://wearable-ecg.firebaseio.com",
+  projectId: "wearable-ecg",
+  storageBucket: "wearable-ecg.appspot.com",
+  messagingSenderId: "782291697136",
+  appId: "1:782291697136:web:a1405d838fe5391f72b135",
+  measurementId: "G-KDBBB66QH5"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+</script>
+
+
+
+  </body>
+
+
+
+</html>
