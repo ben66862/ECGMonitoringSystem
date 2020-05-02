@@ -60,7 +60,7 @@ padding-top: 60px;
 
 #RRinterval {
   position: absolute;
-  bottom: 80%;
+  bottom: 75%;
   left: 400;
   right: 0;
   text-align: center;
@@ -76,7 +76,7 @@ padding-top: 60px;
 
 #AverageBPM {
   position: absolute;
-  bottom: 85%;
+  bottom: 80%;
   left: 400;
   right: 0;
   text-align: center;

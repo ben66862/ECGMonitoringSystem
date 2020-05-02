@@ -21,6 +21,14 @@
   var writingone = Uint8Array.of(1);
   var blob;
   var ecgdata = [];
+  var ecgdata2 = [];
+  var ecghelp;
+  var valueold;
+  var counterremove;
+  var currentMillisdata;
+  var previousMillisdata;
+  var counterremove = 0;
+  var timestarted = performance.now();
 
   document.querySelector('#read').addEventListener('click', function() {
     if (isWebBluetoothEnabled()) { read() }
@@ -48,7 +56,6 @@
       console.log('Web Bluetooth API is not available in this browser!')
       return false
     }
-
     return true
   }
 
@@ -74,7 +81,7 @@
     .then(_ => {
       console.log('First BPM is ')
       document.querySelector('#disconnect').disabled = false
-
+      previousMillisdata = 0;
       return gattCharacteristic.readValue()
     })
     .catch(error => {
@@ -112,33 +119,51 @@
 
   }
 
-  var i = 0;
+
 
   async function handleChangedValue(event) {
-    value = event.target.value.getUint8(0)
-    //Work here
+    value = BigInt(event.target.value.getUint32(0, true));
+
+      ecghelp = value;
+
+      if(value != valueold){
+
+        valueold = value;
+      for (var i = 0; i < 4; i++)
+      {
+        var result = BigInt(ecghelp / 250n);
+        result = result *250n;
+        var modulo = ecghelp - result;
+
+        ecghelp = (ecghelp - modulo)/250n;
+
+        ecgdata2.push(modulo*10n);
+      }
+      }
+
     var now = new Date()
-    console.log(now.getHours() + now.getMinutes() + ':' + now.getSeconds() + " heartsignals = " + value);
 
-    //Data to chart.js
-    addData(chart,(Math.round(performance.now()/1000)), value);
+    //Data to chart.js and store data
+    for (var i = 0; i < 4; i++) {
+      var testdata = BigInt(ecgdata2.pop());
+      //console.log(now.getHours() + now.getMinutes() + ':' + now.getSeconds() + " heartsignals = " + testdata);
+      //console.log(testdata);
+      addData(chart,(Math.round(performance.now() - ((4-i)*20) )), Number(testdata));
 
-    if (i > 150){
-    removeData(chart);
+      ecgdata.push(Number(testdata) + ";" +(Math.round(performance.now() - ((4-i)*20))) + ";" + ecgdata.length + "\n");
+
+      if (counterremove > 1 ){
+      removeData(chart);
+      counterremove = 0;
+      }
+      counterremove++;
+
     }
-    i++;
-    ecgdata.push(value + "," + ecgdata.length + "\n");
-
-    //var userInput = value;        // document.getElementById("myText").value;
-
   }
 
   function saveDataToFile()
    {
-
-          //var userInput = value;        // document.getElementById("myText").value;
           blob = new Blob([ecgdata], { type: "text/plain;charset=utf-8" });
-          //blob = new Blob([userInput], { type: "text/plain;charset=utf-8" });
           saveAs(blob, "ecgdata.txt");
     }
 
@@ -175,8 +200,7 @@
     document.querySelector('#disconnect').disabled = true
   }
 
-
-//chart
+//chartjs.org
   var ctx = document.getElementById('myChart').getContext('2d');
   var chart = new Chart(ctx,
     {
@@ -193,7 +217,7 @@
               borderColor: 'rgb(236, 13, 13)',
               borderWidth: '2',
               fill: false,
-              pointRadius: 1.5,
+              pointRadius: 1.3,
               data: []
           }]
       },
@@ -218,15 +242,17 @@
 						display: true,
 						scaleLabel: {
 							display: true,
-							labelString: 'Time in seconds'
+							labelString: 'Time in milliseconds',
+              fontSize: 10
 						}
 					}],
 					yAxes: [{
 						display: true,
             ticks: {
-              max: 250,
+              max: 3500,
                min: 0,
-               stepSize: 10
+               stepSize: 500
+
            },
 						scaleLabel: {
 							display: true,

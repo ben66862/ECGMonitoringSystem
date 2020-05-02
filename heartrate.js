@@ -94,8 +94,6 @@
       document.querySelector('#start').disabled = false
       document.querySelector('#stop').disabled = true
     })
-
-
   }
 
   var i = 0;
@@ -127,14 +125,9 @@
        bpmvalue = bledata.pop();
        console.log ("BPM= " + bpmvalue);
 	     //console.log ("BPM " + bledata.pop() );  //BPM signal
-
-
       }
 
     bleprev=value;
-
-
-
 
     //console.log('> ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds() + ' BPM is ' + value)
 //Write to index
@@ -199,26 +192,20 @@
     }
 
 
-    if ((bpmvalue > 40) && (bpmvalue < 200)) {
+    if ((bpmvalue > 30) && (bpmvalue < 220)) {
       BPMtext.innerHTML = bpmvalue
-
     }
 
-    if (((rrpeakintervalvalue*10) > 300) && ((rrpeakintervalvalue*10) < 1600)) {
+    if (((rrpeakintervalvalue*10) > 270) && ((rrpeakintervalvalue*10) < 2000)) {
       RRinterval.innerHTML = 'RRinterval:' + (rrpeakintervalvalue*10) + 'ms';
     }
 
-    if ((bpmaverage > 40) && (bpmaverage < 220)) {
+    if ((bpmaverage > 30) && (bpmaverage < 220)) {
       AverageBPM.innerHTML = 'AverageBPM:' + (bpmaverage) + '/min';
     }
 
-
-
-
-
-
     //Data to chart.js
-    if ((bpmvalue > 40) && (bpmvalue < 220) && (bpmonce == false)){
+    if ((bpmvalue > 30) && (bpmvalue < 220) && (bpmonce == false)){
       addData(chart,(Math.round(performance.now()/1000)), bpmvalue);
       bpmvalueold = bpmvalue;
       //document.getElementById("giphyheart").style.visibility = "visible";
